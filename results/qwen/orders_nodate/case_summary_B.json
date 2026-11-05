@@ -1,0 +1,18 @@
+{
+  "prompt_type": "B",
+  "title": "Category별 Unit Price 차이 분석",
+  "summary": "A 대 E로 나눈 category별 unit_price의 평균 차이는 275.0%이며, 이는 전체 데이터에서 평균 unit_price가 30000.0으로, E 대 A로 나눈 경우는 8000.0으로 나타내어 A 대 E의 unit_price가 크게 낮은 것으로 보입니다. 표준화 효과 크기는 2.9로, 이는 실제 데이터와 비교하여 더 큰 차이를 보여주는 것으로 해석할 수 있습니다.",
+  "raw": "제목: Category별 Unit Price 차이 분석\n요약: A 대 E로 나눈 category별 unit_price의 평균 차이는 275.0%이며, 이는 전체 데이터에서 평균 unit_price가 30000.0으로, E 대 A로 나눈 경우는 8000.0으로 나타내어 A 대 E의 unit_price가 크게 낮은 것으로 보입니다. 표준화 효과 크기는 2.9로, 이는 실제 데이터와 비교하여 더 큰 차이를 보여주는 것으로 해석할 수 있습니다.",
+  "numbers": [
+    275.0,
+    30000.0,
+    8000.0,
+    2.9
+  ],
+  "unmatched": [],
+  "grounding_rate": 1.0,
+  "net_score": 4,
+  "coverage": "4/4",
+  "coverage_n": 4,
+  "id_leak": 0
+}

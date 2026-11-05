@@ -1,0 +1,81 @@
+{
+  "case_name": "revenue 변화 사건",
+  "period": {
+    "baseline": "2026-09-03 ~ 2026-09-29",
+    "event": "2026-09-30 ~ 2026-10-08"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "label": "revenue 합계 변화율",
+      "value": -24.3,
+      "unit": "%"
+    },
+    {
+      "id": "E2",
+      "label": "revenue 기준 구간 값",
+      "value": 49928111.1,
+      "unit": ""
+    },
+    {
+      "id": "E3",
+      "label": "revenue 사건 구간 값",
+      "value": 37787300.0,
+      "unit": ""
+    },
+    {
+      "id": "E4",
+      "label": "revenue 변화 시작 시점",
+      "value": "2026-10-04",
+      "unit": ""
+    },
+    {
+      "id": "E5",
+      "label": "category=A revenue 기여도",
+      "value": 65.4,
+      "unit": "%"
+    },
+    {
+      "id": "E6",
+      "label": "region=수도권 revenue 기여도",
+      "value": 48.2,
+      "unit": "%"
+    },
+    {
+      "id": "E7",
+      "label": "cancel_revenue 변화율",
+      "value": 85.7,
+      "unit": "%"
+    },
+    {
+      "id": "E8",
+      "label": "cancel_revenue 변화가 revenue보다 먼저 시작한 칸 수",
+      "value": 4.0,
+      "unit": "칸"
+    },
+    {
+      "id": "E9",
+      "label": "cancel_qty 변화율",
+      "value": 87.0,
+      "unit": "%"
+    },
+    {
+      "id": "E10",
+      "label": "cancel_qty 변화가 revenue보다 먼저 시작한 칸 수",
+      "value": 3.0,
+      "unit": "칸"
+    },
+    {
+      "id": "E11",
+      "label": "net_revenue 변화율",
+      "value": -27.7,
+      "unit": "%"
+    },
+    {
+      "id": "E12",
+      "label": "net_revenue 변화가 revenue와 동시에 시작",
+      "value": 0,
+      "unit": "칸"
+    }
+  ]
+}

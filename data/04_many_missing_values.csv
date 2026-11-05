@@ -1,0 +1,9 @@
+﻿record_id,name,age,email,region,score
+R001,민지,23,,서울,
+R002,,,user2@example.com,,81
+R003,준호,,,부산,
+R004,,35,,,62
+R005,서윤,28,user5@example.com,,
+R006,,,,대전,74
+R007,지우,,,,
+R008,,41,user8@example.com,인천,90

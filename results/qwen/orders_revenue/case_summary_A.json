@@ -1,0 +1,13 @@
+{
+  "prompt_type": "A",
+  "title": "수도권 및 A 부문의 재무 데이터에 따른 급격한 감소",
+  "summary": "수도권과 A 부문의 재무 데이터에서 급격한 감소가 observed되었으며, 이로 인해 전체적인 재무 지표에도 영향을 미쳤다.",
+  "raw": "제목: 수도권 및 A 부문의 재무 데이터에 따른 급격한 감소\n\n요약: 수도권과 A 부문의 재무 데이터에서 급격한 감소가 observed되었으며, 이로 인해 전체적인 재무 지표에도 영향을 미쳤다.",
+  "numbers": [],
+  "unmatched": [],
+  "grounding_rate": 0.0,
+  "net_score": 0,
+  "coverage": "0/12",
+  "coverage_n": 0,
+  "id_leak": 0
+}

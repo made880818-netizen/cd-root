@@ -1,0 +1,33 @@
+{
+  "case_name": "category별 unit_price 차이",
+  "period": {
+    "baseline": "category=E",
+    "event": "category=A"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "label": "unit_price 그룹 간 평균 차이 (category=A 대 E)",
+      "value": 275.0,
+      "unit": "%"
+    },
+    {
+      "id": "E2",
+      "label": "category=A unit_price 평균",
+      "value": 30000.0,
+      "unit": ""
+    },
+    {
+      "id": "E3",
+      "label": "category=E unit_price 평균",
+      "value": 8000.0,
+      "unit": ""
+    },
+    {
+      "id": "E4",
+      "label": "표준화 효과 크기",
+      "value": 2.9,
+      "unit": ""
+    }
+  ]
+}

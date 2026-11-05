@@ -1,0 +1,98 @@
+{
+  "seed": 42,
+  "incident": {
+    "metric": "revenue",
+    "start_day": 61,
+    "end_day": 67,
+    "start_date": "2026-10-02",
+    "end_date": "2026-10-08"
+  },
+  "baseline": {
+    "start_day": 54,
+    "end_day": 60,
+    "start_date": "2026-09-25",
+    "end_date": "2026-10-01"
+  },
+  "root_cause": {
+    "category": "A",
+    "type": "재고 부족",
+    "stockout_days": [
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67
+    ],
+    "low_stock_lead_days": [
+      57,
+      58,
+      59,
+      60
+    ]
+  },
+  "decoys": [
+    {
+      "type": "가격 변경",
+      "category": "C",
+      "price_change_pct": 3.0,
+      "start_day": 61
+    },
+    {
+      "type": "지역 소폭 변동",
+      "region": "호남",
+      "change_pct": -3.0
+    }
+  ],
+  "actual": {
+    "baseline_revenue": 348240000,
+    "incident_revenue": 242227700,
+    "total_drop_pct": 30.44,
+    "A_contribution_pct": 68.68,
+    "contribution_by_category": {
+      "A": 68.68,
+      "B": 11.34,
+      "D": 10.27,
+      "E": 7.39,
+      "C": 2.33
+    },
+    "contribution_by_region": {
+      "수도권": 48.79,
+      "영남": 29.99,
+      "호남": 21.22
+    },
+    "net_revenue_drop_pct": 33.81,
+    "cancel_total": {
+      "baseline_cancel_rate_pct": 3.32,
+      "incident_cancel_rate_pct": 7.87
+    },
+    "cancel_by_category": {
+      "A": {
+        "baseline_cancel_rate_pct": 5.87,
+        "incident_cancel_rate_pct": 57.78
+      },
+      "B": {
+        "baseline_cancel_rate_pct": 3.03,
+        "incident_cancel_rate_pct": 9.05
+      },
+      "C": {
+        "baseline_cancel_rate_pct": 3.01,
+        "incident_cancel_rate_pct": 3.06
+      },
+      "D": {
+        "baseline_cancel_rate_pct": 2.57,
+        "incident_cancel_rate_pct": 8.64
+      },
+      "E": {
+        "baseline_cancel_rate_pct": 3.31,
+        "incident_cancel_rate_pct": 8.67
+      }
+    }
+  },
+  "chain": [
+    "A 재고 급감(57~60일차)",
+    "A 품절(61~67일차)",
+    "총매출 감소 + 취소율 상승(61일차~)"
+  ]
+}

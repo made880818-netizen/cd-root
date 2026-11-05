@@ -1,0 +1,24 @@
+{
+  "prompt_type": "B",
+  "title": "수도권에서 발생한 cancel_revenue 변화 사건",
+  "summary": "수도권에서 발생한 cancel_revenue 변화 사건이 2026년 9월 30일부터 10월 8일까지 진행되었으며, 이로 인해 cancel_revenue의 변화율이 85.7% 증가했고, net_revenue의 변화율은 -27.7%, revenue의 변화율은 -24.3%로 나타났다. 이 사건은 cancel_revenue의 변화가 net_revenue와 revenue에 비해 1.0칸이나 4.0칸 늦게 시작되었다.",
+  "raw": "제목: 수도권에서 발생한 cancel_revenue 변화 사건\n\n요약: 수도권에서 발생한 cancel_revenue 변화 사건이 2026년 9월 30일부터 10월 8일까지 진행되었으며, 이로 인해 cancel_revenue의 변화율이 85.7% 증가했고, net_revenue의 변화율은 -27.7%, revenue의 변화율은 -24.3%로 나타났다. 이 사건은 cancel_revenue의 변화가 net_revenue와 revenue에 비해 1.0칸이나 4.0칸 늦게 시작되었다.",
+  "numbers": [
+    2026.0,
+    9.0,
+    30.0,
+    10.0,
+    8.0,
+    85.7,
+    27.7,
+    24.3,
+    1.0,
+    4.0
+  ],
+  "unmatched": [],
+  "grounding_rate": 1.0,
+  "net_score": 8,
+  "coverage": "7/11",
+  "coverage_n": 7,
+  "id_leak": 0
+}

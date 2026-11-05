@@ -1,0 +1,163 @@
+{
+  "case_name": "cancel_revenue 변화 사건",
+  "period": {
+    "baseline": "2026-09-03 ~ 2026-09-29",
+    "event": "2026-09-30 ~ 2026-10-08"
+  },
+  "evidence": [
+    {
+      "id": "E1",
+      "label": "cancel_revenue 합계 변화율",
+      "value": 85.7,
+      "unit": "%"
+    },
+    {
+      "id": "E2",
+      "label": "cancel_revenue 기준 구간 값",
+      "value": 1496703.7,
+      "unit": ""
+    },
+    {
+      "id": "E3",
+      "label": "cancel_revenue 사건 구간 값",
+      "value": 2778811.1,
+      "unit": ""
+    },
+    {
+      "id": "E4",
+      "label": "cancel_revenue 변화 시작 시점",
+      "value": "2026-09-30",
+      "unit": ""
+    },
+    {
+      "id": "E5",
+      "label": "region=수도권 cancel_revenue 기여도",
+      "value": 49.5,
+      "unit": "%"
+    },
+    {
+      "id": "E6",
+      "label": "cancel_qty 변화율",
+      "value": 87.0,
+      "unit": "%"
+    },
+    {
+      "id": "E7",
+      "label": "cancel_qty 변화가 cancel_revenue보다 늦게 시작한 칸 수",
+      "value": 1.0,
+      "unit": "칸"
+    },
+    {
+      "id": "E8",
+      "label": "net_revenue 변화율",
+      "value": -27.7,
+      "unit": "%"
+    },
+    {
+      "id": "E9",
+      "label": "net_revenue 변화가 cancel_revenue보다 늦게 시작한 칸 수",
+      "value": 4.0,
+      "unit": "칸"
+    },
+    {
+      "id": "E10",
+      "label": "revenue 변화율",
+      "value": -24.3,
+      "unit": "%"
+    },
+    {
+      "id": "E11",
+      "label": "revenue 변화가 cancel_revenue보다 늦게 시작한 칸 수",
+      "value": 4.0,
+      "unit": "칸"
+    }
+  ],
+  "status": "ok",
+  "main_metric": "cancel_revenue",
+  "axis": "date",
+  "window": {
+    "b0": 31,
+    "e0": 58,
+    "ev_end": 67
+  },
+  "debug": {
+    "roles": {
+      "date": "axis (날짜/시각)",
+      "category": "group (범주(5종))",
+      "region": "group (범주(3종))",
+      "qty": "measure (수치)",
+      "unit_price": "measure (수치)",
+      "revenue": "measure (수치)",
+      "cancel_qty": "measure (수치)",
+      "cancel_revenue": "measure (수치)",
+      "net_revenue": "measure (수치)"
+    },
+    "axis": "date",
+    "rules": {
+      "qty": "sum",
+      "unit_price": "sum",
+      "revenue": "sum",
+      "cancel_qty": "sum",
+      "cancel_revenue": "sum",
+      "net_revenue": "sum"
+    },
+    "metric_candidates": {
+      "qty": {
+        "z": 2.6,
+        "pct": -18.2
+      },
+      "unit_price": {
+        "z": 0.5,
+        "pct": 0.5
+      },
+      "revenue": {
+        "z": 3.3,
+        "pct": -24.3
+      },
+      "cancel_qty": {
+        "z": 9.1,
+        "pct": 87.0
+      },
+      "cancel_revenue": {
+        "z": 9.3,
+        "pct": 85.7
+      },
+      "net_revenue": {
+        "z": 3.8,
+        "pct": -27.7
+      }
+    },
+    "top_groups": [
+      [
+        "region",
+        "수도권",
+        49.5
+      ],
+      [
+        "category",
+        "B",
+        33.7
+      ]
+    ],
+    "covariates": [
+      {
+        "col": "cancel_qty",
+        "pct": 87.0,
+        "z": 9.1,
+        "onset": "2026-10-01"
+      },
+      {
+        "col": "net_revenue",
+        "pct": -27.7,
+        "z": 3.8,
+        "onset": "2026-10-04"
+      },
+      {
+        "col": "revenue",
+        "pct": -24.3,
+        "z": 3.3,
+        "onset": "2026-10-04"
+      }
+    ]
+  }
+}

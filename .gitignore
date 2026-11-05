@@ -1,0 +1,22 @@
+# ---- 비밀: 절대 올리지 않는다 ----
+.streamlit/secrets.toml
+api key.txt
+*.env
+.env
+
+# ---- 파이썬/도구 캐시 ----
+__pycache__/
+.pytest_cache/
+.ipynb_checkpoints/
+*.pyc
+
+# ---- 서비스와 상관없는 개인·임시 파일 ----
+/orders.csv
+/inventory.csv
+/ground_truth.json
+/workshop.ipynb
+/요구분석명세서.pdf
+/schematest*.txt
+data/06_upload_limit_10MB.csv
+results/_samples/
+tools/_paste_results.txt

@@ -1,0 +1,18 @@
+{
+  "prompt_type": "A",
+  "title": "Category별 Unit Price 차이에 따른 증거 분석",
+  "summary": "- category=A와 E의 Unit Price 간 평균 차이는 275%로 나타났다.\n- category=A의 Unit Price 평균은 30,000.0이며, category=E는 8,000.0이다.\n- 표준화 효과 크기는 2.9으로 확인되었다.",
+  "raw": "제목: Category별 Unit Price 차이에 따른 증거 분석\n\n요약: \n- category=A와 E의 Unit Price 간 평균 차이는 275%로 나타났다.\n- category=A의 Unit Price 평균은 30,000.0이며, category=E는 8,000.0이다.\n- 표준화 효과 크기는 2.9으로 확인되었다.",
+  "numbers": [
+    275.0,
+    30000.0,
+    8000.0,
+    2.9
+  ],
+  "unmatched": [],
+  "grounding_rate": 1.0,
+  "net_score": 4,
+  "coverage": "4/4",
+  "coverage_n": 4,
+  "id_leak": 0
+}

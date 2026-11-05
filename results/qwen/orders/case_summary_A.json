@@ -1,0 +1,15 @@
+{
+  "prompt_type": "A",
+  "title": "수도권에서의 cancel_revenue 및 net_revenue 변화",
+  "summary": "수도권에서 cancel_revenue와 net_revenue 모두 85.7% 증감률을 나타내며, 이는 cancel_revenue가 먼저 변화했지만 net_revenue가 더 빠르게 감소했다.",
+  "raw": "제목: 수도권에서의 cancel_revenue 및 net_revenue 변화\n\n요약: 수도권에서 cancel_revenue와 net_revenue 모두 85.7% 증감률을 나타내며, 이는 cancel_revenue가 먼저 변화했지만 net_revenue가 더 빠르게 감소했다.",
+  "numbers": [
+    85.7
+  ],
+  "unmatched": [],
+  "grounding_rate": 1.0,
+  "net_score": 1,
+  "coverage": "1/11",
+  "coverage_n": 1,
+  "id_leak": 0
+}
