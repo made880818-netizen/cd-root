@@ -42,8 +42,8 @@ AI_RUNS_PER_SESSION = int(get_secret("AI_RUNS_PER_SESSION", "3"))     # 방문�
 AI_RUNS_PER_HOUR = int(get_secret("AI_RUNS_PER_HOUR", "30"))          # 서버 전체에서 한 시간에 허용하는 AI 검토 횟수
 
 # --- Supabase 저장 (완료된 검토 결과 요약을 DB에 남긴다). 설정이 없으면 저장하지 않고 앱은 그대로 동작 ---
-SUPABASE_URL = get_secret("SUPABASE_URL", "").rstrip("/")             # 예: https://abcdxxxx.supabase.co
-SUPABASE_SERVICE_KEY = get_secret("SUPABASE_SERVICE_KEY", "")         # service_role 키: 서버(Secrets)에만 둔다. 브라우저·GitHub에 노출 금지
+SUPABASE_URL = (get_secret("SUPABASE_URL") or get_secret("service_url")).rstrip("/")   # 예: https://abcdxxxx.supabase.co (service_url 이름도 허용)
+SUPABASE_SERVICE_KEY = get_secret("SUPABASE_SERVICE_KEY") or get_secret("service_role")   # service_role 키: 서버(Secrets)에만 둔다. 브라우저·GitHub에 노출 금지
 STORE_ENABLED = bool(SUPABASE_URL and SUPABASE_SERVICE_KEY) and get_secret("DISABLE_STORE", "0") != "1"
 
 # --- 틸론 GPU 실시간 연동 (GitHub Issues 작업 큐). 설정이 없으면 저장된 결과만 보여준다 ---

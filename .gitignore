@@ -20,3 +20,8 @@ __pycache__/
 data/06_upload_limit_10MB.csv
 results/_samples/
 tools/_paste_results.txt
+
+# ---- 대회 안내의 키 파일 이름 (.env.local 등) ----
+.env.local
+.env.*
+!.env.example
