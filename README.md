@@ -30,6 +30,19 @@ python -m streamlit run app.py
 - `ANTHROPIC_API_KEY`, `ANTHROPIC_BASE_URL`(선택), `CLAUDE_MODEL`(선택), `DISABLE_LLM=1`(AI 끄기), `DISABLE_TTS=1`
 - 키가 없거나 호출이 실패하면 규칙 기반으로 동작한다. **키는 코드·로그·저장소에 넣지 않는다.**
 
+## 배포 구조
+```
+방문자 ─▶ Vercel(vercel/, 입구 페이지) ─ iframe ─▶ Streamlit Community Cloud(app.py) ─▶ Claude(AI 검토) / Supabase(결과 저장)
+```
+- **앱 본체(Streamlit)는 Streamlit Community Cloud**에서 실행한다. Streamlit은 지속적인 웹소켓 연결이 필요해서 Vercel 서버리스에서는 안정적으로 돌지 않는다.
+- **Vercel에는 입구 페이지(`vercel/index.html`)만** 올린다. 앱을 전체 화면 iframe으로 보여 주고, 앱 주소는 `vercel/config.js` 한 줄이다. (공개 Community Cloud 앱은 iframe 임베드를 공식 지원한다)
+- **키는 저장소에 없다.** 배포 환경의 Secrets에만 둔다. 예시: `.streamlit/secrets.toml.example`
+- **AI 검토 횟수 제한**: 방문자당 3번, 서버 전체 시간당 30번(공유 API 예산 보호). 저장된 결과 보기와 규칙 기반 분석은 제한이 없다.
+- **Supabase 저장(선택)**: 끝난 검토의 요약(증거·점수·AI 발언·보고서)을 `investigations` 테이블에 저장한다. **원본 CSV 행과 업로드 파일 이름은 저장하지 않는다.**
+  테이블은 `supabase/migrations/`의 SQL로 만든다(`npx supabase db push`). RLS를 켜고 정책을 두지 않아, 서버의 service_role 키로만 접근된다.
+  설정이 없으면 저장하지 않고 앱은 그대로 동작한다. 시험: `python tests/test_store.py`
+- 틸론 GPU 실시간 연동은 배포에서는 끄고(Secrets에 `GPU_QUEUE_*`를 넣지 않음) 저장된 결과를 보여 준다.
+
 ## 폴더
 ```
 app.py                  Streamlit 화면

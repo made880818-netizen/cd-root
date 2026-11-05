@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CD ROOT</title>
+  <meta name="description" content="CSV 하나로 '왜 갑자기 변했지?'의 원인 후보를 찾는 데이터 사건 조사 서비스">
+  <style>
+    html, body { margin: 0; height: 100%; background: #080B10; color: #E6EDF3; font-family: system-ui, "Noto Sans KR", "Malgun Gothic", sans-serif; }
+    #app { display: block; width: 100%; height: 100%; border: 0; }
+    #fallback { position: fixed; right: 12px; bottom: 12px; font-size: 12px; background: rgba(13, 19, 27, .92); border: 1px solid rgba(120, 160, 190, .35);
+                padding: 6px 10px; border-radius: 2px; }
+    #fallback a { color: #00D9FF; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <iframe id="app" title="CD ROOT" allow="autoplay; clipboard-write; fullscreen"></iframe>
+  <div id="fallback">화면이 안 보이면 <a id="open" target="_blank" rel="noopener">새 탭에서 열기 ↗</a></div>
+  <noscript><p style="padding:2rem">이 페이지는 JavaScript가 필요합니다. 앱 주소를 직접 열어 주세요.</p></noscript>
+  <!-- 앱 주소는 config.js 한 줄에서만 바꾼다 -->
+  <script src="config.js"></script>
+  <script>
+    var url = window.CDROOT_APP_URL;
+    document.getElementById("app").src = url;
+    document.getElementById("open").href = url;
+  </script>
+</body>
+</html>

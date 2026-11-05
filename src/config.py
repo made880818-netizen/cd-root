@@ -41,6 +41,11 @@ LLM_ENABLED = bool(ANTHROPIC_API_KEY) and get_secret("DISABLE_LLM", "0") != "1"
 AI_RUNS_PER_SESSION = int(get_secret("AI_RUNS_PER_SESSION", "3"))     # 방문자 한 명이 AI 검토를 실행할 수 있는 횟수
 AI_RUNS_PER_HOUR = int(get_secret("AI_RUNS_PER_HOUR", "30"))          # 서버 전체에서 한 시간에 허용하는 AI 검토 횟수
 
+# --- Supabase 저장 (완료된 검토 결과 요약을 DB에 남긴다). 설정이 없으면 저장하지 않고 앱은 그대로 동작 ---
+SUPABASE_URL = get_secret("SUPABASE_URL", "").rstrip("/")             # 예: https://abcdxxxx.supabase.co
+SUPABASE_SERVICE_KEY = get_secret("SUPABASE_SERVICE_KEY", "")         # service_role 키: 서버(Secrets)에만 둔다. 브라우저·GitHub에 노출 금지
+STORE_ENABLED = bool(SUPABASE_URL and SUPABASE_SERVICE_KEY) and get_secret("DISABLE_STORE", "0") != "1"
+
 # --- 틸론 GPU 실시간 연동 (GitHub Issues 작업 큐). 설정이 없으면 저장된 결과만 보여준다 ---
 GPU_QUEUE_REPO = get_secret("GPU_QUEUE_REPO", "")                     # 예: 계정/저장소이름 (비공개 저장소)
 GPU_QUEUE_TOKEN = get_secret("GPU_QUEUE_TOKEN", "")                   # 그 저장소 Issues 읽기/쓰기 권한만 가진 토큰
@@ -72,6 +77,7 @@ def summary():
         "claude_model": CLAUDE_MODEL,
         "llm_enabled": LLM_ENABLED,
         "gpu_live_link": "설정됨" if GPU_QUEUE_ENABLED else "꺼짐(저장된 결과만)",
+        "supabase_store": "설정됨" if STORE_ENABLED else "꺼짐(저장 안 함)",
         "tts_enabled": TTS_ENABLED,
         "results_dir_exists": RESULTS_DIR.exists(),
         "cache_dir_exists": CACHE_DIR.exists(),

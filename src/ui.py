@@ -460,7 +460,8 @@ def guide_where():
             ("3  가설 토론", "AI (Claude)", "외부 AI API", "요약된 증거 · 열 이름 · 그룹 값 (원본 행은 보내지 않음)"),
             ("4  증거 검증", "코드", "CD ROOT 서버", "없음"),
             ("5  결과 표시", "코드", "내 브라우저", "없음"),
-            ("6  GPU 요약 카드 (선택)", "틸론 GPU (Qwen)", "틸론 노트북", "요약된 증거 (GitHub 비공개 저장소를 거쳐 전달, 버튼을 눌렀을 때만)")]
+            ("6  GPU 요약 카드 (선택)", "틸론 GPU (Qwen)", "틸론 노트북", "요약된 증거 (GitHub 비공개 저장소를 거쳐 전달, 버튼을 눌렀을 때만)"),
+            ("7  검토 결과 저장 (선택)", "코드", "Supabase (DB)", "검토 결과 요약: 증거·점수·AI 발언·보고서 (원본 행과 업로드 파일 이름은 저장하지 않음)")]
     tr = "".join(f"<tr><td>{e(a)}</td><td>{e(b)}</td><td>{e(c)}</td><td>{e(d)}</td></tr>" for a, b, c, d in rows)
     body = (f'<table class="tbl"><tr><th>단계</th><th>누가</th><th>어디서</th><th>밖으로 나가는 것</th></tr>{tr}</table>'
             '<div class="txt dim" style="margin-top:.5rem">AI를 끄면(규칙 모드) 외부로 나가는 정보는 없습니다.</div>')

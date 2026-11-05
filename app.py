@@ -6,7 +6,7 @@ import streamlit as st
 
 ROOT = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "src"))
-import config, export_case as ec, agents, debate, ui, gpu_queue, quota
+import config, export_case as ec, agents, debate, ui, gpu_queue, quota, store
 from logger import get_logger, set_session, get_logs, clear_logs, step
 
 log = get_logger("app")
@@ -190,6 +190,23 @@ def allow_ai_run():
     S["ai_runs"] = S.get("ai_runs", 0) + 1
     log.info(f"AI 검토 허용: 이 방문 {S['ai_runs']}/{config.AI_RUNS_PER_SESSION}, 서버 전체 최근 1시간 {hourly_cap().used()}/{config.AI_RUNS_PER_HOUR}")
     return True, ""
+
+
+@st.cache_data(ttl=10, show_spinner=False)
+def recent_saved(sid):
+    """이 방문에서 Supabase에 저장된 검토 목록 (10초 캐시)"""
+    return store.recent(sid)
+
+
+def save_result():
+    """방금 끝난 검토 결과의 요약을 Supabase에 저장한다 (원본 행 제외). 실패해도 화면은 그대로 동작한다."""
+    if not store.enabled() or not S.out or S.out.get("from_cache"):
+        return
+    label = f"demo:{S.name}" if str(S.src_id).startswith("demo:") else "upload"     # 업로드 파일 이름은 저장하지 않는다
+    ok, msg = store.save(store.build_row(S["sid"], label, S.df.shape, S.case, S.result, S.out))
+    recent_saved.clear()
+    ev("저장", "검토 결과를 Supabase에 저장했어요" if ok else f"Supabase 저장에 실패했어요 (화면에는 영향 없음): {msg}", OK if ok else WARN)
+    log.info(f"Supabase 저장: {ok} {msg}")
 
 
 @st.cache_data(ttl=15, show_spinner=False)
@@ -613,6 +630,7 @@ if ok_case():
             S.core = "CONCLUSION"
             S.mismatch = S.out.get("ledger_mismatch")
             ev("완료", f"조사 종료 · {'AI + 코드 검증' if S.out['mode'] == 'llm' else '규칙 기반'} · {S.out.get('seconds', '-')}초", OK)
+            save_result()
             play("solved")
             show_toast()
     elif S.load_saved:
@@ -631,6 +649,16 @@ paint_report()
 
 # ---------- EVIDENCE ARCHIVE ----------
 with tab_arc:
+    if store.enabled():
+        saved = recent_saved(S["sid"])
+        st.html(ui.panel("저장된 검토 (Supabase)", '<div class="txt dim">끝난 검토의 요약(증거·점수·AI 발언·보고서)이 DB에 저장돼요. 원본 CSV 행은 저장하지 않아요.</div>',
+                         tag=f"이 방문 {len(saved)}건", tone=OK))
+        if saved:
+            st.dataframe(pd.DataFrame([{"저장 시각": r["created_at"][:19].replace("T", " "), "데이터": r["dataset_label"], "1위 후보": r["top_title"],
+                                        "근거 강도": r["top_score"], "방식": "AI+코드" if r["mode"] == "llm" else "규칙 기반", "토큰": r["tokens"], "초": r["seconds"]}
+                                       for r in saved]), hide_index=True, use_container_width=True)
+    else:
+        st.html(ui.panel("저장된 검토 (Supabase)", '<div class="txt dim">저장 연결이 꺼져 있어요. Supabase 설정이 없으면 검토 결과를 저장하지 않아요.</div>', tag="꺼짐", tone=MUTE))
     if not S.df is None and S.case:
         st.html(ui.panel("CASE EVIDENCE · export_case.py", '<div class="txt dim">CSV에서 코드가 계산한 사건 증거입니다. 모든 보고서 숫자의 출처입니다.</div>', tag=S.case["status"].upper(), tone=CY))
         st.dataframe(pd.DataFrame([{"ID": x["id"], "항목": x["label"], "값": f"{x['value']}{x['unit']}"} for x in S.case["evidence"]]),

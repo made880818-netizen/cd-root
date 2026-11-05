@@ -8,7 +8,7 @@ import config
 
 _session = contextvars.ContextVar("sid", default="-")   # 방문자 구분 (로그가 섞이지 않게)
 _buffer = deque(maxlen=config.LOG_BUFFER_SIZE)
-_SECRET = re.compile(r"(sk-[A-Za-z0-9_\-]{10,}|hf_[A-Za-z0-9]{10,}|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,})")   # 키 모양 문자열
+_SECRET = re.compile(r"(sk-[A-Za-z0-9_\-]{10,}|hf_[A-Za-z0-9]{10,}|github_pat_[A-Za-z0-9_]{20,}|gh[pousr]_[A-Za-z0-9]{20,}|sb_(?:secret|publishable)_[A-Za-z0-9_\-]{10,}|eyJ[A-Za-z0-9_\-]{20,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,})")   # 키 모양 문자열
 
 
 class MaskFilter(logging.Filter):
