@@ -2,7 +2,7 @@
 
 임의의 CSV에서 **이상 사건을 자동으로 찾고**, 서로 다른 가설을 맡은 AI 에이전트들이 **증거로 경쟁**해 가장 근거가 강한 가설을 고르는 서비스.
 
-- 배포 주소: _(배포 후 기입)_
+- 배포 주소: https://cd-root-6tpqyp5agfmdjta7iwq4hp.streamlit.app/ (입구: https://cd-root.vercel.app/)
 - 발표자료: _(기입)_
 
 ## 핵심 원칙
@@ -32,10 +32,10 @@ python -m streamlit run app.py
 
 ## 배포 구조
 ```
-방문자 ─▶ Vercel(vercel/, 입구 페이지) ─ iframe ─▶ Streamlit Community Cloud(app.py) ─▶ Claude(AI 검토) / Supabase(결과 저장)
+방문자 ─▶ Vercel(vercel/, 입구 페이지) ─ 자동 이동 ─▶ Streamlit Community Cloud(app.py) ─▶ Claude(AI 검토) / Supabase(결과 저장)
 ```
 - **앱 본체(Streamlit)는 Streamlit Community Cloud**에서 실행한다. Streamlit은 지속적인 웹소켓 연결이 필요해서 Vercel 서버리스에서는 안정적으로 돌지 않는다.
-- **Vercel에는 입구 페이지(`vercel/index.html`)만** 올린다. 앱을 전체 화면 iframe으로 보여 주고, 앱 주소는 `vercel/config.js` 한 줄이다. (공개 Community Cloud 앱은 iframe 임베드를 공식 지원한다)
+- **Vercel에는 입구 페이지(`vercel/index.html`)만** 올린다. 앱 주소(`vercel/config.js` 한 줄)로 자동 이동시킨다. (iframe 임베드는 실제 브라우저에서 막혀 쓰지 않는다)
 - **키는 저장소에 없다.** 배포 환경의 Secrets에만 둔다. 예시: `.streamlit/secrets.toml.example`
 - **AI 검토 횟수 제한**: 방문자당 3번, 서버 전체 시간당 30번(공유 API 예산 보호). 저장된 결과 보기와 규칙 기반 분석은 제한이 없다.
 - **Supabase 저장(선택)**: 끝난 검토의 요약(증거·점수·AI 발언·보고서)을 `investigations` 테이블에 저장한다. **원본 CSV 행과 업로드 파일 이름은 저장하지 않는다.**
