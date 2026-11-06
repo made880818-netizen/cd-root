@@ -3,8 +3,6 @@
 임의의 CSV에서 **이상 사건을 자동으로 찾고**, 서로 다른 가설을 맡은 AI 에이전트들이 **증거로 경쟁**해 가장 근거가 강한 가설을 고르는 서비스.
 
 - 배포 주소: https://cd-root-6tpqyp5agfmdjta7iwq4hp.streamlit.app/ (입구: https://cd-root.vercel.app/)
-- 발표자료: _(기입)_
-
 ## 핵심 원칙
 | 원칙 | 구현 |
 |---|---|
