@@ -10,7 +10,7 @@ import config, export_case as ec, agents, debate, ui, gpu_queue, quota, store
 from logger import get_logger, set_session, get_logs, clear_logs, step
 
 log = get_logger("app")
-st.set_page_config(page_title="CD ROOT", page_icon="◈", layout="wide", initial_sidebar_state="auto")
+st.set_page_config(page_title="CD ROOT", page_icon="◈", layout="wide", initial_sidebar_state="expanded")
 st.html(ui.inject_css())
 
 CY, PU, WARN, CRIT, OK, MUTE = "#00D9FF", "#A78BFA", "#FFB547", "#FF4D6D", "#3DDC97", "#6B7C8C"

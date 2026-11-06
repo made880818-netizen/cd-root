@@ -33,6 +33,7 @@ header[data-testid="stHeader"]{background:transparent}
 .block-container{padding:.4rem 1.1rem 2rem!important;max-width:100%!important}
 section[data-testid="stSidebar"]{background:var(--panel);border-right:1px solid var(--line)}
 section[data-testid="stSidebar"]{font-family:var(--sans)}
+[data-testid="stSidebarCollapseButton"],[data-testid="stSidebarCollapsedControl"]{display:none!important}
 [data-testid="stAudio"]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .st-key-feed{gap:.3rem!important}
 .st-key-feed .stButton>button>div{justify-content:flex-start!important;width:100%}
