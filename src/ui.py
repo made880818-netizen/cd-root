@@ -34,6 +34,7 @@ header[data-testid="stHeader"]{background:transparent}
 section[data-testid="stSidebar"]{background:var(--panel);border-right:1px solid var(--line)}
 section[data-testid="stSidebar"]{font-family:var(--sans)}
 [data-testid="stSidebarCollapseButton"],[data-testid="stSidebarCollapsedControl"]{display:none!important}
+section[data-testid="stSidebar"][data-collapsed="true"]{transform:none!important;width:300px!important;min-width:300px!important;visibility:visible!important}
 [data-testid="stAudio"]{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 .st-key-feed{gap:.3rem!important}
 .st-key-feed .stButton>button>div{justify-content:flex-start!important;width:100%}
